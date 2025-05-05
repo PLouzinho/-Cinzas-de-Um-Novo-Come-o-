@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cinzas de Um Novo Começo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #5a4e7c;
+    }
+    .section {
+      margin-bottom: 2rem;
+      border-left: 4px solid #5a4e7c;
+      padding-left: 1rem;
+    }
+    .choices {
+      background: #e8e8f3;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    button {
+      background-color: #5a4e7c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.3rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #413866;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cinzas de Um Novo Começo</h1>
+  <div id="story">
+    <div class="section" id="intro">
+      <h2>Introdução</h2>
+      <p>Pedro, 42 anos, emigrou para o Reino Unido à procura de estabilidade. Agora, com a família distante, despesas elevadas, e novas propostas surgindo, ele está em dilema: continuar ou regressar?</p>
+      <button onclick="next('finance')">Avançar</button>
+    </div>
+
+    <div class="section hidden" id="finance">
+      <h2>Resumo Financeiro</h2>
+      <p>Pedro ganha cerca de GBP 1600/mês líquidos. Gasta aproximadamente EUR 1388 entre Portugal e Reino Unido. Em setembro, precisa renovar o visto e o COS, custando cerca de EUR 3700.</p>
+      <button onclick="next('nanci')">Próximo</button>
+    </div>
+
+    <div class="section hidden" id="nanci">
+      <h2>Carta da Sobrinha (Nanci)</h2>
+      <p>"Decidi voltar para Portugal. A avó está frágil. Ver-te sozinho lá custa-me. Estar contigo significaria tudo."</p>
+      <button onclick="next('mae')">Próximo</button>
+    </div>
+
+    <div class="section hidden" id="mae">
+      <h2>Bilhete da Mãe</h2>
+      <p>"Filho, estou a esquecer-me das coisas. A vizinha ajuda, mas preciso de ti."</p>
+      <button onclick="next('irmaos')">Próximo</button>
+    </div>
+
+    <div class="section hidden" id="irmaos">
+      <h2>Proposta dos Irmãos</h2>
+      <p>Trabalho como cozinheiro em navio, EUR 2000/mês, 3 meses no mar, 1 em terra. Com eles. Com a família.</p>
+      <button onclick="next('decisao')">Próximo</button>
+    </div>
+
+    <div class="section hidden" id="decisao">
+      <h2>Decisão Final</h2>
+      <div class="choices">
+        <p>O que Pedro deve fazer?</p>
+        <button onclick="reveal('ficar')">Ficar no Reino Unido</button>
+        <button onclick="reveal('voltar')">Voltar a Portugal</button>
+      </div>
+    </div>
+
+    <div class="section hidden" id="ficar">
+      <h2>Escolha: Ficar no Reino Unido</h2>
+      <p>Pedro escolhe continuar, na esperança de estabilidade e um futuro mais forte. Mas estará emocionalmente sozinho?</p>
+    </div>
+
+    <div class="section hidden" id="voltar">
+      <h2>Escolha: Voltar a Portugal</h2>
+      <p>Pedro regressa para junto da mãe, dos irmãos, e da sobrinha. Recomeça no mar, mas com o coração em casa.</p>
+    </div>
+  </div>
+
+  <script>
+    function next(id) {
+      document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function reveal(id) {
+      document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
+      document.getElementById('decisao').classList.remove('hidden');
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
